@@ -1,4 +1,4 @@
-import 'package:bloc_test/cubit/counter_cubit.dart';
+import 'package:bloc_test/cubit/arithmetic_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +29,7 @@ class ArithmeticCubitView extends StatelessWidget {
             TextFormField(
               controller: secondController,
             ),
-            BlocBuilder<CounterCubit, int>(
+            BlocBuilder<ArithmeticCubit, int>(
               builder: (context, state) {
                 return Text(
                   "Result: $state",
@@ -44,7 +44,7 @@ class ArithmeticCubitView extends StatelessWidget {
                 second = int.parse(secondController.text);
                 print(first);
                 print(second);
-                context.read<CounterCubit>().add(first, second);
+                context.read<ArithmeticCubit>().add(first, second);
               },
               child: Text("Add"),
             ),
@@ -52,7 +52,7 @@ class ArithmeticCubitView extends StatelessWidget {
               onPressed: () {
                 first = int.parse(firstController.text);
                 second = int.parse(secondController.text);
-                context.read<CounterCubit>().subtract(first, second);
+                context.read<ArithmeticCubit>().subtract(first, second);
               },
               child: Text("Subtract"),
             ),
@@ -60,7 +60,7 @@ class ArithmeticCubitView extends StatelessWidget {
               onPressed: () {
                 first = int.parse(firstController.text);
                 second = int.parse(secondController.text);
-                context.read<CounterCubit>().multiply(first, second);
+                context.read<ArithmeticCubit>().multiply(first, second);
               },
               child: Text("Multiply"),
             ),
