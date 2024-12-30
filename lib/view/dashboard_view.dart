@@ -98,12 +98,54 @@ class DashboardView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const <Widget>[
+                  Icon(Icons.circle, size: 48),
+                  Text('Circumference'),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            child: InkWell(
+              onTap: () {
+                context.read<DashboardCubit>().openCounterBlocView(context);
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
                   Icon(
-                    Icons.circle,
+                    Icons.add,
                     size: 48,
                     color: Colors.grey,
                   ),
-                  Text('Circumference'),
+                  Text('Counter Bloc'),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            child: InkWell(
+              onTap: () {
+                context.read<DashboardCubit>().openArithmeticBlocView(context);
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Icon(Icons.calculate, size: 48),
+                  Text('Arthmetic Bloc'),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            child: InkWell(
+              onTap: () {
+                context.read<DashboardCubit>().openStudentBlocView(context);
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Icon(Icons.person, size: 48),
+                  Text('Student Bloc'),
                 ],
               ),
             ),
