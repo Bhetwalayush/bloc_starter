@@ -1,4 +1,4 @@
-import 'package:bloc_test/cubit/arithmetic_cubit.dart';
+import 'package:bloc_test/bloc/arithmetic_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +15,7 @@ class ArithmeticBlocView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("arithmetic cubit"),
+        title: Text("Arithmetic Bloc"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -29,7 +29,7 @@ class ArithmeticBlocView extends StatelessWidget {
             TextFormField(
               controller: secondController,
             ),
-            BlocBuilder<ArithmeticCubit, int>(
+            BlocBuilder<ArithmeticBloc, int>(
               builder: (context, state) {
                 return Text(
                   "Result: $state",
@@ -44,7 +44,9 @@ class ArithmeticBlocView extends StatelessWidget {
                 second = int.parse(secondController.text);
                 print(first);
                 print(second);
-                context.read<ArithmeticCubit>().add(first, second);
+                context
+                    .read<ArithmeticBloc>()
+                    .add(IncrementEvent(first, second));
               },
               child: Text("Add"),
             ),
@@ -52,7 +54,9 @@ class ArithmeticBlocView extends StatelessWidget {
               onPressed: () {
                 first = int.parse(firstController.text);
                 second = int.parse(secondController.text);
-                context.read<ArithmeticCubit>().subtract(first, second);
+                context
+                    .read<ArithmeticBloc>()
+                    .add(DecrementEvent(first, second));
               },
               child: Text("Subtract"),
             ),
@@ -60,7 +64,9 @@ class ArithmeticBlocView extends StatelessWidget {
               onPressed: () {
                 first = int.parse(firstController.text);
                 second = int.parse(secondController.text);
-                context.read<ArithmeticCubit>().multiply(first, second);
+                context
+                    .read<ArithmeticBloc>()
+                    .add(MultiplyEvent(first, second));
               },
               child: Text("Multiply"),
             ),

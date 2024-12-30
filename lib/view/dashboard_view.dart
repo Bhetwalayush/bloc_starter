@@ -98,7 +98,11 @@ class DashboardView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const <Widget>[
-                  Icon(Icons.circle, size: 48),
+                  Icon(
+                    Icons.circle,
+                    size: 48,
+                    color: Colors.grey,
+                  ),
                   Text('Circumference'),
                 ],
               ),
