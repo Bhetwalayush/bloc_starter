@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc/arithmetic_bloc.dart';
+import 'package:bloc_test/bloc/counter_bloc.dart';
 import 'package:bloc_test/cubit/areea_of_circle_cubit.dart';
 import 'package:bloc_test/cubit/arithmetic_cubit.dart';
 import 'package:bloc_test/cubit/circumference_cubit.dart';
@@ -17,6 +18,7 @@ Future<void> intDependencies() async {
 
 void _initBloc() {
   serviceLocator.registerLazySingleton(() => ArithmeticBloc());
+  serviceLocator.registerLazySingleton(() => CounterBloc());
 }
 
 void _initCubit() {
@@ -33,6 +35,7 @@ void _initCubit() {
 
   serviceLocator.registerLazySingleton<DashboardCubit>(
     () => DashboardCubit(
+      serviceLocator(),
       serviceLocator(),
       serviceLocator(),
       serviceLocator(),
